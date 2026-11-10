@@ -4,7 +4,7 @@
 Aprender a resolver conflictos utilizando Git y GitHub.
 
 ## Experiencia
-Estoy aprendiendo a utilizar Git y GitHub.
+Estoy aprendiendo a resolver conflictos en GitHub.
 
 ## Conclusión
 Esta actividad permite comprender el trabajo colaborativo.
