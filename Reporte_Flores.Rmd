@@ -1,0 +1,57 @@
+---
+title: "Reporte de Flores: Análisis de Datos"
+author: "Lucas Gandolfo"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+## Resumen
+
+Este reporte analiza el conjunto de datos `iris`, incluido en R. Contiene 150 observaciones de tres especies de flores: setosa, versicolor y virginica. Se estudian las medidas de los sépalos y pétalos, con especial atención al largo de los pétalos.
+
+## Detalle de los datos
+
+Primero observamos un resumen estadístico de las variables.
+
+```{r resumen, echo=TRUE}
+summary(iris)
+```
+
+## Promedio del largo del pétalo
+
+Calculamos el promedio general del largo del pétalo, expresado en centímetros.
+
+```{r promedio}
+mean(iris$Petal.Length)
+```
+
+## Comparación por especie
+
+Para comprender mejor las diferencias, calculamos el largo promedio de los pétalos para cada especie.
+
+```{r comparacion}
+promedios <- aggregate(Petal.Length ~ Species, data = iris, FUN = mean)
+knitr::kable(promedios, digits = 2,
+             col.names = c("Especie", "Largo promedio del pétalo (cm)"))
+```
+
+## Gráfico del largo de los pétalos
+
+El siguiente diagrama de cajas permite observar cómo se distribuyen las medidas de cada especie.
+
+```{r grafico, fig.width=8, fig.height=5}
+boxplot(Petal.Length ~ Species, data = iris,
+        main = "Largo del pétalo por especie",
+        xlab = "Especie", ylab = "Largo del pétalo (cm)",
+        col = c("lightblue", "lightgreen", "lightpink"))
+```
+
+## Conclusión
+
+El conjunto de datos muestra diferencias claras en el largo de los pétalos de las tres especies. En promedio, setosa tiene los pétalos más cortos, virginica los más largos y versicolor presenta valores intermedios. La comparación por especie aporta más información que el promedio general por sí solo.
+
+## Reproducibilidad
+
+Este informe utiliza el conjunto de datos `iris` disponible en R y la función `knitr::kable()` para presentar una tabla. Para generar el HTML, abrí este archivo en RStudio y seleccioná **Knit**. No se necesitan archivos de datos externos.
